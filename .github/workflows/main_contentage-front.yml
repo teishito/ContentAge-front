@@ -69,4 +69,5 @@ jobs:
         with:
           app-name: 'ContentAge-front'
           slot-name: 'Production'
-          package: release.zip
+          package: ./deploy
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CONTENTAGEFRONT }}
