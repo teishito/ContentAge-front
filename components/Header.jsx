@@ -24,18 +24,6 @@ export default function Header() {
             ContentAge
           </h1>
         </Link>
-    
-        <button
-          className="text-white focus:outline-none"
-          onClick={toggleMenu}
-          aria-label="Toggle Menu"
-        >
-          <div className="space-y-1">
-            <div className="w-6 h-0.5 bg-white"></div>
-            <div className="w-6 h-0.5 bg-white"></div>
-            <div className="w-6 h-0.5 bg-white"></div>
-          </div>
-        </button>
       </div>
     </header>
   );
