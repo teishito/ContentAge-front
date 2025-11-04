@@ -12,7 +12,7 @@ export default function CampaignDetail() {
     setPostData(null);
 
     try {
-      const res = await fetch("/api/fetch-instagram-post", {
+      const res = await fetch("https://contentage-back.azurewebsites.net/api/fetch-instagram-post", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url: postUrl }),
