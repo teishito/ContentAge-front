@@ -6,13 +6,16 @@ export default function CampaignDetail() {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
+  // ✅ 本番用バックエンドURL（FastAPI）
+  const API_URL = "https://contentage-back.azurewebsites.net/api/fetch-instagram-post";
+
   const fetchPostData = async () => {
     setLoading(true);
     setErrorMsg("");
     setPostData(null);
 
     try {
-      const res = await fetch("https://contentage-back.azurewebsites.net/api/fetch-instagram-post", {
+      const res = await fetch(API_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ url: postUrl }),
@@ -24,6 +27,7 @@ export default function CampaignDetail() {
       }
 
       const data = await res.json();
+      console.log("✅ 取得データ:", data);
       setPostData(data);
     } catch (error) {
       console.error("エラー:", error);
@@ -35,8 +39,10 @@ export default function CampaignDetail() {
 
   return (
     <div className="max-w-3xl mx-auto bg-white p-6 mt-12 mb-24 rounded shadow">
-      <h2 className="text-2xl font-bold text-[#5B7F6F] mb-4">キャンペーン投稿の詳細</h2>
-      
+      <h2 className="text-2xl font-bold text-[#5B7F6F] mb-4">
+        キャンペーン投稿の詳細
+      </h2>
+
       <div className="flex flex-col gap-3 mb-4">
         <input
           type="text"
@@ -58,11 +64,19 @@ export default function CampaignDetail() {
 
       {postData && (
         <div className="space-y-4">
-          <img src={postData.image_url} alt="投稿画像" className="w-full rounded shadow" />
+          <img
+            src={postData.media_url}
+            alt="投稿画像"
+            className="w-full rounded shadow"
+          />
+
           <div>
             <h3 className="text-lg font-semibold">投稿内容</h3>
-            <p className="whitespace-pre-wrap text-gray-800">{postData.caption}</p>
+            <p className="whitespace-pre-wrap text-gray-800">
+              {postData.caption}
+            </p>
           </div>
+
           <div className="text-sm text-gray-600">
             <p>❤️ いいね数: {postData.likes}</p>
             <p>💬 コメント数: {postData.comments}</p>
