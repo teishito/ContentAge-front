@@ -1,12 +1,29 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
+    "./app/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
-    "./app/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        black: "#000000",
+        gray1: "#B5B5B5",
+        gray2: "#E5E5E5",
+        orange: "#F48B00",
+        blue: "#004EFF",
+      },
+      fontFamily: {
+        sans: ["'Zen Kaku Gothic New'", "'Urbanist'", "sans-serif"],
+      },
+      boxShadow: {
+        card: "0 4px 20px rgba(0,0,0,0.05)",
+      },
+      borderRadius: {
+        lg: "0.75rem",
+      },
+    },
   },
   plugins: [],
 };
