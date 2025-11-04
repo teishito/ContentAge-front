@@ -21,7 +21,7 @@ export default function Header() {
       <div className="flex justify-between items-center px-6">
         <Link href="/">
           <h1 className="text-xl font-bold cursor-pointer" aria-label="Home">
-            Richness
+            ContentAge
           </h1>
         </Link>
     
