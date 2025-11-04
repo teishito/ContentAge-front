@@ -1,6 +1,6 @@
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import CampaignDetail from "../components/CampaignDetail";
+import CampaignDetail from "../components/InstagramPost";
 
 export default function CampaignDetailPage() {
   return (
