@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ContentAge ブランドスタイル */
+body {
+  @apply bg-gray-50 text-black font-sans;
+}
