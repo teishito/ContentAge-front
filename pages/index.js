@@ -1,105 +1,70 @@
-import { useState } from 'react';
+// pages/index.js
+import Link from "next/link";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function Home() {
-
-  //GETリクエストを送信
-  const [getResponse, setGetResponse] = useState('');
-
-  const handleGetRequest = async () => {
-    const res = await fetch('http://localhost:5000/api/hello', {
-      method: 'GET',
-    });
-    const data = await res.json();
-
-
-    // GETリクエストの結果をコンソールに表示
-    console.log("GETリクエストの結果:", data.message);
-
-    setGetResponse(data.message);
-  };
-
-  //動的なGETリクエストの送信
-  const [id, setId] = useState('');
-  const [idResponse, setIdResponse] = useState('');
-
-  // IDを指定してGETリクエストを送信
-  const handleIdRequest = async (e) => {
-    e.preventDefault();
-
-    const res = await fetch(`http://localhost:5000/api/multiply/${id}`, {
-      method: 'GET',
-    });
-    const data = await res.json();
-
-    // IDリクエストの結果をコンソールに表示
-    console.log("IDリクエストの結果:", data.doubled_value);
-
-    setIdResponse(data.doubled_value);
-  };
-
-  //POSTリクエストを送信
-  const [input, setInput] = useState('');
-  const [postResponse, setPostResponse] = useState('');
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    //入力されたデータをコンソールに表示
-    console.log("入力情報:", input);
-
-    const res = await fetch('http://localhost:5000/api/echo', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ "message":input }),
-
-    });
-    console.log(JSON.stringify({ "message":input }));
-    const data = await res.json();
-
-    //バックエンドからのレスポンスをコンソールに表示
-    console.log("Backendからのお返事:", data.message);
-
-    setPostResponse(data.message);
-  };
-
-
   return (
-    <div>
+    <div className="min-h-screen bg-[var(--color-BG)] flex flex-col">
+      <Header />
 
-      <h1>Next.jsとFlaskの連携アプリ</h1>
+      <main className="flex-grow">
+        {/* ヘッダーの高さぶん余白を空ける */}
+        <section className="max-w-5xl mx-auto px-4 md:px-6 pt-28 pb-16">
+          {/* 見出しエリア（Companyページのイメージ） */}
+          <div className="mb-10">
+            <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-[var(--color-B)]">
+              Zero Project
+            </h1>
+            <p className="mt-2 text-sm md:text-base text-[var(--color-G)]">
+              ゼロプロジェクト ツール一覧 / Zero Project Tools
+            </p>
 
-      <h2>GETリクエストを送信</h2>
-      <button onClick={handleGetRequest}>GETリクエストを送信</button>
-      {getResponse && <p>サーバーからのGET応答: {getResponse}</p>}
+            {/* 下線代わりの薄いボーダー（好みで） */}
+            <div className="mt-6 border-b border-[var(--color-BDB)]/10" />
+          </div>
 
-      <h2>IDを指定してGETリクエストを送信</h2>
-      <form onSubmit={handleIdRequest}>
-        <input
-          type="number"
-          value={id}
-          onChange={(e) => setId(e.target.value)}
-          placeholder="IDを入力してください"
-        />
-        <button type="submit">送信</button>
-      </form>
-      {idResponse && <p>Flaskからの応答: {idResponse}</p>}
+          {/* ツール一覧（アコーディオン風のカード） */}
+          <div className="space-y-3">
+            <Link href="/instagram-post" className="block">
+              <div className="flex items-center justify-between rounded-xl bg-[#f5f5f5] px-4 md:px-6 py-4 hover:bg-[#ebebeb] transition">
+                <div>
+                  <p className="text-sm md:text-base font-semibold text-[var(--color-B)]">
+                    Instagramキャンペーン投稿取得ツール
+                  </p>
+                  <p className="text-xs md:text-sm text-[var(--color-G)]">
+                    Instagram Campaign Post Fetcher
+                  </p>
+                </div>
+                <span className="text-xs md:text-sm text-[var(--color-G)]">
+                  OPEN
+                </span>
+              </div>
+            </Link>
 
-      <h2>POSTリクエストを送信</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={input}
+            {/* 将来ツールが増えたらここに追加 */}
+            {/* 
+            <Link href="/xxx" className="block">
+              <div className="flex items-center justify-between rounded-xl bg-[#f5f5f5] px-4 md:px-6 py-4 hover:bg-[#ebebeb] transition">
+                <div>
+                  <p className="text-sm md:text-base font-semibold text-[var(--color-B)]">
+                    （別ツール名）日本語
+                  </p>
+                  <p className="text-xs md:text-sm text-[var(--color-G)]">
+                    English Name of Tool
+                  </p>
+                </div>
+                <span className="text-xs md:text-sm text-[var(--color-G)]">
+                  OPEN
+                </span>
+              </div>
+            </Link>
+            */}
+          </div>
+        </section>
+      </main>
 
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="テキストを入力してください"
-        />
-
-        <button type="submit">送信</button>
-      </form>
-      {postResponse && <p>FlaskからのPOST応答: {postResponse}</p>}
-
+      <Footer />
     </div>
   );
 }
