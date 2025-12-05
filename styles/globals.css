@@ -1,3 +1,65 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --spacing: 0.0625rem;
+  --font-weight-extrabold: 800;
+  --default-transition-duration: 150ms;
+  --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  --default-font-family: var(--font-sans);
+  --default-mono-font-family: var(--font-mono);
+  --color-W: #fff;
+  --color-BLK: #000;
+  --color-B: #232323;
+  --color-BDB: #333;
+  --color-DG: #2d2d2d;
+  --color-G: #969696;
+  --color-BG: #fff;
+  --color-BGKEY: #d0d1e1;
+  --color-RED: #ff002f;
+  --color-ERR: red;
+  --color-Grad: linear-gradient(
+    90deg,
+    #e83f24,
+    #e4007f 16.5%,
+    #a90082 30.5%,
+    #4551b2 42%,
+    #0089d3 50%,
+    #4551b2 58%,
+    #a90082 69.5%,
+    #e4007f 83.5%,
+    #e83f24
+  );
+  --color-GradLG: linear-gradient(
+    90deg,
+    #e83f24,
+    #e4007f 16.25%,
+    #a90082 30.05%,
+    #0089d3 50%,
+    #a90082 69.95%,
+    #e4007f 83.75%,
+    #e83f24
+  );
+  --ease-a: cubic-bezier(0.4, 0.2, 0.2, 1);
+  --ease-hv: cubic-bezier(0.4, 0.2, 0.3, 1);
+}
+
+/* 全体トーンを本サイト寄りに */
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: var(--default-font-family);
+  background-color: var(--color-BG);
+  color: var(--color-B);
+}
+
+/* スクロール時のゆれ防止 */
+* {
+  box-sizing: border-box;
+}
