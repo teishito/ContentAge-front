@@ -35,21 +35,18 @@ export default function InstagramPost() {
     }
   };
 
-  const handleDownload = () => {
+  const handleDownload = async () => {
     try {
-      if (!postData?.media_url) {
-        alert("ダウンロードするメディアが見つかりません。");
-        return;
-      }
-
+      const response = await fetch(postData.media_url);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
       const link = document.createElement("a");
-      link.href = postData.media_url; // Azure Blob の URL
-      link.download = postData.is_video
-        ? "instagram_post.mp4"
-        : "instagram_post.jpg";
+      link.href = url;
+      link.download = "instagram_post.jpg";
       document.body.appendChild(link);
       link.click();
       link.remove();
+      window.URL.revokeObjectURL(url);
     } catch (err) {
       alert("画像のダウンロードに失敗しました。");
       console.error(err);
@@ -98,33 +95,11 @@ export default function InstagramPost() {
           <div className="space-y-6 border-t border-[var(--color-BDB)]/10 pt-6">
             <div className="flex flex-col md:flex-row gap-6">
               <div className="md:w-1/2">
-                {postData.is_video ? (
-                  <video
-                    src={postData.media_url}
-                    controls
-                    className="w-full rounded-lg shadow-sm border border-[var(--color-BDB)]/10"
-                  />
-                ) : (
-                  <img
-                    src={postData.media_url}
-                    alt="投稿画像"
-                    className="w-full rounded-lg shadow-sm border border-[var(--color-BDB)]/10"
-                  />
-                )}
-
-                <div className="mt-3 flex justify-center">
-                  <button
-                    onClick={handleDownload}
-                    className="inline-flex items-center gap-2 text-xs md:text-sm bg-[var(--color-B)] text-[var(--color-W)] px-4 py-2 rounded-md hover:bg-[var(--color-DG)] transition"
-                  >
-                    <span>📥</span>
-                    <span>
-                      {postData.is_video
-                        ? "動画をダウンロード"
-                        : "画像をダウンロード"}
-                    </span>
-                  </button>
-                </div>
+                <img
+                  src={postData.media_url}
+                  alt="投稿画像"
+                  className="w-full rounded-lg shadow-sm border border-[var(--color-BDB)]/10"
+                />
               </div>
 
               <div className="md:w-1/2 space-y-4">
