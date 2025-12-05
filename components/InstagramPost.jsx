@@ -54,14 +54,16 @@ export default function InstagramPost() {
   };
 
   return (
-    <section className="w-full max-w-3xl mx-auto mt-32 mb-16">
-      <div className="mb-8">
-        <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-[var(--color-B)] mb-2">
+    <section className="max-w-5xl mx-auto px-4 md:px-6 pt-28 pb-16">
+      {/* タイトルブロック */}
+      <div className="mb-10">
+        <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-[var(--color-B)]">
           Instagram投稿データ取得
-        </h2>
-        <p className="text-sm text-[var(--color-G)]">
+        </h1>
+        <p className="mt-2 text-sm md:text-base text-[var(--color-G)]">
           取得したいInstagram投稿のURLを入力すると、投稿内容・いいね数・コメント数を確認し、画像をダウンロードできます。
         </p>
+        <div className="mt-6 border-b border-[var(--color-BDB)]/10" />
       </div>
 
       <div className="bg-[var(--color-W)] border border-[var(--color-BDB)]/20 rounded-xl shadow-sm p-6 md:p-8 space-y-6">
