@@ -54,7 +54,7 @@ export default function InstagramPost() {
   };
 
   return (
-    <section className="max-w-5xl mx-auto px-4 md:px-6 pt-28 pb-16">
+    <section className="max-w-5xl mx-auto px-4 md:px-6 pt-32 pb-16">
       {/* タイトルブロック */}
       <div className="mb-10">
         <h1 className="text-4xl md:text-5xl font-semibold tracking-tight text-[var(--color-B)]">
