@@ -22,7 +22,7 @@ export default function Header() {
               alt="ContentAge"
               width={720}
               height={144}
-              className="w-[200px] md:w-[260px] lg:w-[300px] h-auto"
+              className="w-[140px] md:w-[180px] lg:w-[220px] h-auto"
               priority
             />
           </Link>
