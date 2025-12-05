@@ -42,11 +42,6 @@ export default function Header() {
           </button>
         </div>
 
-        {/* サブタイトル */}
-        <p className="mt-2 text-xs md:text-sm text-[var(--color-G)]">
-          Communication Produce
-        </p>
-
         {/* ドロップダウンメニュー */}
         {open && (
           <nav className="mt-2 w-52 ml-auto rounded-lg border border-[var(--color-BDB)]/20 bg-[var(--color-W)] shadow-lg text-sm overflow-hidden">
